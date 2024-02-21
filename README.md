@@ -1,21 +1,17 @@
 **Article metadata processing for professional journals**
 
 **Project Description**
-
 The [GOAL project](link:%20https://www.zhaw.ch/de/forschung/forschungsdatenbank/projektdetail/projektid/5535/) aims to develop case scenarios for adding full texts to repositories. The goal is to minimize manual workload for libraries and publishers while ensuring efficient workflows.
-
 In the context of the GOAL project, we focus on semi-automated workflows for bibliographic metadata related to the [journal "Krankenpflege"](https://sbk-asi.ch/de/mitglieder/gemeinsam-stark/fachzeitschrift/), published by the Schweizer Berufsverband der Pflegefachfrauen und Pflegefachmänner SBK – ASI. We focus also on semi-automated workflows for bibliographic metadata and PDF files of articles related to the [journal "GERONTOLOGIE CH. Praxis + Forschung"](https://www.gerontologie.ch/wissen/magazin).
-
 These enriched bibliographic metadata facilitate the inclusion of all possible full texts into the repositories of project partners and beyond.
+
 
 **Enriching article metadata for the journal "Krankenpflege"**
 
 Python script enhances exported and preprocessed bibliographic metadata of "Krankenpflege" articles in the CINAHL ultimate database by filling in missing data elements. This data was preprocessed with OpenRefine by the GOAL project (e.g. normalized affiliation data) before.
-
 Additionally, the script aligns the table and columns with the standards defined by the GOAL project for data provision in CSV and Excel files. The resulting dataset contains bibliographic information for articles published by members of Swiss higher education institutions (HEIs) in the journal "Krankenpflege".
 
 The input CSV contains the following columns:
-
 - Affiliation normalized
 - rec - header - controlInfo - aug - affil
 - rec - header - controlInfo - aug - au
@@ -34,7 +30,6 @@ The input CSV contains the following columns:
 - rec - header - displayInfo - pLink - url
 
 The following columns, along with their respective values, were added with the help of the Python script:
-
 - dc.date.issued
 - dc.publisher
 - dc.identifier.uri
@@ -45,12 +40,12 @@ The following columns, along with their respective values, were added with the h
 
 To populate the necessary values for dc.identifier.uri (link to the full text on the publisher's website), web scraping was employed. The script searches the PDF archive of the journal using the article title as a search phrase. It then extracts the link from the first search result provided by the PDF archive and adds it to the CSV/Excel file.
 
+
 **Enriching article metadata and creating articles (PDF) for the journal "GERONTOLOGIE CH. Praxis + Forschung"**
 
 The Python script enhances bibliographic metadata received from the publisher. The publisher has provided an Excel file with all articles published by Swiss university members from 2020 till 2023 (issue 1 and 2). This Excel was further preprocessed and saved as CSV with OpenRefine by the GOAL project (e.g. normalized affiliation data). Based on this file the Python script adds missing bibliographic data and uses this data to split full texts of issues (PDF) into single articles. Additionally, it aligns the table and columns received with the standards defined by the GOAL project for data provision in CSV and Excel files. The resulting dataset contains bibliographic information and full texts in PDF format for articles published by members of Swiss higher education institutions (HEIs) in the journal, that could be self-archived in repositories of the respective university.
 
 The preprocessed CSV contains the following columns:
-
 - affiliation normalized
 - Hochschule (dt. Version)
 - QID
@@ -68,7 +63,6 @@ The preprocessed CSV contains the following columns:
 - fr. Zusammenfassung
 
 The following columns, along with their respective values, were added with the help of the Python script:
-
 - dc.date.issued
 - dc.publisher"
 - dc.identifier.issn
@@ -81,6 +75,7 @@ The following columns, along with their respective values, were added with the h
 - dc.identifier.uri
 - language.iso
 - name
+
 
 **How to Install and Run the Projects**
 
@@ -107,14 +102,12 @@ Because the webscraping for Krankenpflege was only done once instead of incorpor
 
 3. Convert cURL Command:
 
-- Paste the copied cURL command into a tool like curlconverter.com.
-
-o The tool will convert the cURL command into Python code, including the necessary headers and cookies.
+  -  Paste the copied cURL command into a tool like curlconverter.com.
+  -  The tool will convert the cURL command into Python code, including the necessary headers and cookies.
 
 4. Use Headers and Cookies:
 
 - Extract the headers and cookies from the converted Python code.
-
 - Use these headers and cookies in the script for subsequent requests.
 - File names can be renamed in config.ini, parameter for webscraping can also be adjusted in config.ini
 
@@ -128,3 +121,6 @@ additional packages
 - beautifulsoup4 (version 4.12.3)
 - pandas (version 2.1.3)
 - pypdf (version 3.17.1)
+
+**Contributing**
+Feel free to contribute by opening pull requests or reporting issues.
