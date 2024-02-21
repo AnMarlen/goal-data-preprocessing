@@ -1,4 +1,13 @@
+"""
+    This file is part of the  GOAL data preprocessing package.
+    (c) ZHAW HSB <apps.hsb@zhaw.ch>
+
+    For the full copyright and license information, please view the LICENSE
+    file that was distributed with this source code.
+"""
+
 # Import standard python library package
+import configparser
 import subprocess
 from urllib import request
 
@@ -6,8 +15,17 @@ from urllib import request
 import pandas as pd
 from pypdf import PdfReader, PdfWriter
 
+# Read config.ini and get values
+config = configparser.ConfigParser
+config.read("../config.ini")
+input_csv = config.get("Gerontologie CH", "input_csv")
+output_csv = config.get("Gerontologie CH", "output_csv")
+output_excel = config.get("Gerontologie CH", "output_excel")
+acrobat = config.get("Gerontologie CH", "acrobat")
+
+
 # Open and read Excel file with bibliographic metadata of articles in magazines
-df = pd.read_excel("./data_in/articles_Gerontologie_zhaw_2023.xlsx")
+df = pd.read_excel(f"./data_in/{input_csv}", sep=";", encoding="utf-8", header=0)
 
 # Add two new columns for notes about translation of articles
 df["notiz_fr"] = (
@@ -97,7 +115,7 @@ df_french["dc.identifier.uri"].replace(regex="_dt", value="_fr", inplace=True)
 df_combined = pd.concat([df_german, df_french])
 df_combined.reset_index(drop=True, inplace=True)
 
-# Add column for file name of PDF for each article
+# Add column for file name of PDF for each article, pattern is LastNameOfFirstAuthor_First20CharaktersOfTitle_year
 df_combined["file.name"] = (
     df_combined["dc.contributor.author"].str.split(",").str[0] 
     + "_" 
@@ -203,15 +221,15 @@ df_combined = df_combined[[
 
 # Save changes to CSV file for combined article list
 df_combined.to_csv(
-    "./data_out/metadata/list_Gerontologie.csv", 
+    f"./data_out/metadata/{output_csv}", 
     sep=",", encoding="utf-8", index=False
     )
 
 # Save changes to Excel file for combined article list
 df_combined.to_excel(
-    "./data_out/metadata/list_Gerontologie.xlsx", 
+    f"./data_out/metadata/{output_excel}", 
     index=False
     )
 
 # Open Adobe Acrobat Pro to make adjustments to PDFs of articles via batch
-subprocess.Popen("C:\Program Files (x86)\Adobe\Acrobat DC\Acrobat\Acrobat.exe")
+subprocess.Popen(acrobat)
