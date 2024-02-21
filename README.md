@@ -2,7 +2,9 @@
 
 **Project Description**
 The [GOAL project](link:%20https://www.zhaw.ch/de/forschung/forschungsdatenbank/projektdetail/projektid/5535/) aims to develop case scenarios for adding full texts to repositories. The goal is to minimize manual workload for libraries and publishers while ensuring efficient workflows.
+
 In the context of the GOAL project, we focus on semi-automated workflows for bibliographic metadata related to the [journal "Krankenpflege"](https://sbk-asi.ch/de/mitglieder/gemeinsam-stark/fachzeitschrift/), published by the Schweizer Berufsverband der Pflegefachfrauen und Pflegefachmänner SBK – ASI. We focus also on semi-automated workflows for bibliographic metadata and PDF files of articles related to the [journal "GERONTOLOGIE CH. Praxis + Forschung"](https://www.gerontologie.ch/wissen/magazin).
+
 These enriched bibliographic metadata facilitate the inclusion of all possible full texts into the repositories of project partners and beyond.
 
 
@@ -122,5 +124,7 @@ additional packages
 - pandas (version 2.1.3)
 - pypdf (version 3.17.1)
 
+
 **Contributing**
+
 Feel free to contribute by opening pull requests or reporting issues.
