@@ -1,6 +1,8 @@
-**Article metadata processing for professional journals**
+Article metadata processing for professional journals
+=========================
 
-**Project Description**
+Project Description
+--------------------------
 
 The [GOAL project](link:%20https://www.zhaw.ch/de/forschung/forschungsdatenbank/projektdetail/projektid/5535/) aims to develop case scenarios for adding full texts to repositories. The goal is to minimize manual workload for libraries and publishers while ensuring efficient workflows.
 
@@ -84,7 +86,8 @@ The following columns, along with their respective values, were added with the h
 - name
 
 
-**How to Install and Run the Projects**
+How to Install and Run the Projects
+--------------------------
 
 _Before running the scripts, follow these steps:_
 
@@ -122,7 +125,7 @@ _Prerequisites_
 
 - Python 3.11.7
 
-additional packages
+**additional packages**
 
 - requests (version 2.31.0)
 - beautifulsoup4 (version 4.12.3)
