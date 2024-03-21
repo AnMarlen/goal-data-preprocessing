@@ -27,13 +27,13 @@ import pandas as pd
 config = configparser.ConfigParser
 config.read("../config.ini")
 input_csv = config.get("Krankenpflege", "input_csv")
-search_url = ("Krankenpflege", "search_url")
-cookies_login = ("Krankenpflege", "cookies_login")
-headers_login = ("Krankenpflege", "headers_login")
-phrase_link = ("Krankenpflege", "phrase_link")
-url_homepage = ("Krankenpflege", "url_homepage")
-output_csv = ("Krankenpflege", "output_csv")
-output_excel = ("Krankenpflege", "output_excel")
+search_url = config.get("Krankenpflege", "search_url")
+cookies_login = config.get("Krankenpflege", "cookies_login")
+headers_login = config.get("Krankenpflege", "headers_login")
+phrase_link = config.get("Krankenpflege", "phrase_link")
+url_homepage = config.get("Krankenpflege", "url_homepage")
+output_csv = config.get("Krankenpflege", "output_csv")
+output_excel = config.get("Krankenpflege", "output_excel")
 
 # Open and read preprocessed CSV file with bibliographic metadata of articles in magazines
 df = pd.read_csv(f"./data_in/{input_csv}", sep=";", encoding="utf-8", header=0)
