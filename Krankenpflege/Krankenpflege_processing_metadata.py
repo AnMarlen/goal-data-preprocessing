@@ -9,12 +9,12 @@
 
 # Import standard python library package
 import configparser
-import requests
 import re
 
 # Import additional packages
 from bs4 import BeautifulSoup
 import pandas as pd
+import requests
 
 
 """Prepare the script before running:
