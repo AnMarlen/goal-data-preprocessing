@@ -4,12 +4,35 @@ Article metadata processing for professional journals
 Project Description
 --------------------------
 
-The [GOAL project](link:%20https://www.zhaw.ch/de/forschung/forschungsdatenbank/projektdetail/projektid/5535/) aims to develop case scenarios for adding full texts to repositories. The goal is to minimize manual workload for libraries and publishers while ensuring efficient workflows.
+The [GOAL project](https://www.zhaw.ch/de/forschung/forschungsdatenbank/projektdetail/projektid/5535/) aims to develop case scenarios for adding full-texts to repositories. The goal is to minimize manual workload for libraries and publishers while ensuring efficient workflows.
 
 In the context of the GOAL project, we focus on semi-automated workflows for bibliographic metadata related to the [journal "Krankenpflege"](https://sbk-asi.ch/de/mitglieder/gemeinsam-stark/fachzeitschrift/), published by the Schweizer Berufsverband der Pflegefachfrauen und Pflegefachmänner SBK – ASI. We focus also on semi-automated workflows for bibliographic metadata and PDF files of articles related to the [journal "GERONTOLOGIE CH. Praxis + Forschung"](https://www.gerontologie.ch/wissen/magazin).
 
-These enriched bibliographic metadata facilitate the inclusion of all possible full texts into the repositories of project partners and beyond.
+The python scripts enrich provided bibliographic metadata to facilitate the inclusion of all possible full-texts into the repositories of the project partners and beyond. The resulting data is provided in CSV and Excel format and includes the following columns
+- affiliation normalized	
+- affiliation published	
+- dc.contributor.author	
+- dc.title	
+- Issue
+- Volume
+- dc.date.issued	
+- dc.relation.ispartof	
+- pages.start	
+- pages.end	
+- dc.identifier.issn
+- dc.publisher
+- dc.identifier.uri
+- dc.language.iso
+- publication.status
+- dc.subject	
+- dc.description.abstract	
+- dc.rights	
+- dcterms.type	
+- note	
+- file.name	
 
+The collection process and processing steps of the bibliographic metadata are described in detail in the following data paper: 
+Moritz, A., Hodel, B., & Trautwein, C. (2024). Enriched bibliographic metadata and full-texts of Swiss articles in "Krankenpflege" and "GERONTOLOGIE CH. Praxis + Forschung". Zenodo. https://doi.org/10.5281/zenodo.10991510 
 
 **Enriching article metadata for the journal "Krankenpflege"**
 
@@ -45,12 +68,12 @@ The following columns, along with their respective values, were added with the h
 - dcterms.type
 - file.name
 
-To populate the necessary values for dc.identifier.uri (link to the full text on the publisher's website), web scraping was employed. The script searches the PDF archive of the journal using the article title as a search phrase. It then extracts the link from the first search result provided by the PDF archive and adds it to the CSV/Excel file.
+To populate the necessary values for dc.identifier.uri (link to the full-text on the publisher's website), web scraping was employed. The script searches the PDF archive of the journal using the article title as a search phrase. It then extracts the link from the first search result provided by the PDF archive and adds it to the CSV/Excel file.
 
 
 **Enriching article metadata and creating articles (PDF) for the journal "GERONTOLOGIE CH. Praxis + Forschung"**
 
-The Python script enhances bibliographic metadata received from the publisher. The publisher has provided an Excel file with all articles published by Swiss university members from 2020 till 2023 (issue 1 and 2). This Excel was further preprocessed and saved as CSV with OpenRefine by the GOAL project (e.g. normalized affiliation data). Based on this file the Python script adds missing bibliographic data and uses this data to split full texts of issues (PDF) into single articles. Additionally, it aligns the table and columns received with the standards defined by the GOAL project for data provision in CSV and Excel files. The resulting dataset contains bibliographic information and full texts in PDF format for articles published by members of Swiss higher education institutions (HEIs) in the journal, that could be self-archived in repositories of the respective university.
+The Python script enhances bibliographic metadata received from the publisher. The publisher has provided an Excel file with all articles published by Swiss university members from 2020 to 2023 (issue 1 and 2). This Excel was further preprocessed and saved as CSV with OpenRefine by the GOAL project (e.g. normalized affiliation data). Based on this file the Python script adds missing bibliographic data and uses this data to split full-texts of issues (PDF) into single articles. Additionally, it aligns the table and columns received with the standards defined by the GOAL project for data provision in CSV and Excel files. The resulting dataset contains bibliographic information and full-texts in PDF format for articles published by members of Swiss higher education institutions (HEIs) in the journal, that could be self-archived in repositories of the respective university.
 
 The preprocessed CSV contains the following columns:
 
@@ -91,11 +114,11 @@ How to Install and Run the Projects
 
 _Before running the scripts, follow these steps:_
 
-- Check your file: Ensure that the file you want to process contains all the column names mentioned earlier, or adjust the script accordingly.
-- Adjust file paths: Modify all file pathsif necessary. Both script contains relative file paths to the subfolders data\_in and data\_out (or data\_out/metadata and data\_out/full-text) for storing input files or output files.
-- Insert your cookies and headers, before you run the Python Script for Krankenpflege: Fill in the cookies and headers with your personal browser data after logging in with your username and password (see below).
+- Check your input file: Ensure that the file you want to process contains all the column names mentioned earlier, or adjust the script accordingly.
+- Adjust file paths: Modify all file paths if necessary. Both scripts contain relative file paths to the subfolders data\_in and data\_out (or data\_out/metadata and data\_out/full-text) for storing input files or output files.
+- Insert your cookies and headers before you run the Python Script for Krankenpflege: Fill in the cookies and headers with your browser data after logging in with your username and password (see below).
 
-Because the webscraping for Krankenpflege was only done once instead of incorporating authentication directly into the script, we used the following approach:
+Instead of incorporating authentication directly into the script, we used the following approach of authentification, because the web scraping for Krankenpflege was only done once:
 
 1. Manual Authentication:
 
@@ -119,7 +142,7 @@ Because the webscraping for Krankenpflege was only done once instead of incorpor
 
   - Extract the headers and cookies from the converted Python code.
   - Use these headers and cookies in the script for subsequent requests.
-  - File names can be renamed in config.ini, parameter for webscraping can also be adjusted in config.ini
+  - File names can be renamed in config.ini, parameter for web scraping can also be adjusted in config.ini
 
 _Prerequisites_
 
